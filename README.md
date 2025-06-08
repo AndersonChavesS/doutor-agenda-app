@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🩺 AgendaPro — SaaS de Agendamento para Clínicas com IA
 
-## Getting Started
+SaaS de agendamento para clínicas médicas, oferecendo gestão completa de médicos, pacientes, agendamentos e planos de assinatura, com recursos de inteligência artificial para otimizar o atendimento e o fluxo clínico.
 
-First, run the development server:
+## 📸 Protótipo (Figma)
+
+Confira o esboço visual da aplicação:
+![Dashboard](./public//assets/images/dashboard-img.png)
+![Agendamentos](./public//assets/images/agendamentos-img.png)
+![Médicos](./public//assets/images/medicos-img.png)
+![Pacientes](./public//assets/images/pacientes-img.png)
+![Planos](./public//assets/images/planos-img.png)
+
+## 📊 Diagrama do Banco de Dados
+
+![Diagrama do Banco de Dados](./public/assets/images/diagrama-banco-otimizado.png)
+
+## 📋 Funcionalidades
+
+- **Autenticação**
+
+  - Usuário pode ter várias clínicas
+
+- **Gestão de Clínicas**
+
+  - Gerenciamento de médicos (CRUD)
+
+    - Disponibilidade de horários
+    - Preço da consulta
+
+  - Gerenciamento de pacientes (CRUD)
+
+  - Agendamento de consultas (médico x paciente)
+
+- **Planos de Assinatura**
+
+  - Gestão de planos para acesso aos recursos da plataforma
+
+- **Inteligência Artificial**
+  - Recurso de IA para otimizar horários e sugerir agendamentos automáticos com base em disponibilidade, histórico e preferências dos pacientes.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+<div style="display: flex; gap: 10px;">
+<img height="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+<img height="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" />
+<img height="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
+<img height="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" />
+<img height="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" />
+<img height="30" src="https://img.icons8.com/color/48/000000/stripe.png" />
+<img height="30" src="https://img.icons8.com/fluency/48/openai.png" />
+<img height="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" />
+</div>
+
+- **Front-end:** React.js + Next.js + Tailwind CSS
+- **Back-end:** Node.js + TypeScript
+- **Banco de Dados:** PostgreSQL
+- **Pagamentos:** Stripe
+- **Inteligência Artificial:** OpenAI API (ou outro serviço integrável)
+- **Estilização:** Tailwind CSS
+
+---
+
+## 📌 Como Executar o Projeto
 
 ```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/agenda-pro.git
+
+# Instale as dependências
+cd agenda-pro
+npm install
+
+# Configure as variáveis de ambiente
+cp .env.example .env
+
+# Execute as migrations (se aplicável)
+npx prisma migrate dev
+
+# Inicie o servidor
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
