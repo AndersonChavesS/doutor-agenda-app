@@ -6,7 +6,7 @@ import SignUpForm from "./components/sign-up-form";
 const AuthenticationPage = () => {
   return (
     <div className="flex h-screen w-screen items-center justify-center">
-      <Tabs defaultValue="login" className="w-[60%]">
+      <Tabs defaultValue="login" className="w-[400px]">
         <TabsList>
           <TabsTrigger value="login">Login</TabsTrigger>
           <TabsTrigger value="register">Criar conta</TabsTrigger>

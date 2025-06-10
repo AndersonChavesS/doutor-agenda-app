@@ -2,11 +2,16 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 
 import { db } from "@/db";
+import * as schema from "@/db/schema";
+
+import { sendEmail } from "./SendEmail";
+
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",
     usePlural: true,
+    schema,
   }),
   user: {
     modelName: "usersTable",
@@ -19,5 +24,18 @@ export const auth = betterAuth({
   },
   verification: {
     modelName: "verificationsTable",
+  },
+  emailAndPassword: {
+    enabled: true,
+    requireEmailVerification: true,
+  },
+  emailVerification: {
+    sendVerificationEmail: async ({ user, url, token }) => {
+      await sendEmail({
+        to: user.email,
+        subject: "Verificação de email",
+        text: `Clique aqui para verificar seu email: ${url}\n${token}`,
+      });
+    },
   },
 });
