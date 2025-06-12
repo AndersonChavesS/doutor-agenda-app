@@ -65,7 +65,16 @@ const SignUpForm = () => {
       {
         onSuccess: () => {
           router.push("/authentication");
-          toast.success("Conta criada com sucesso! Verifique seu e-mail para ativar sua conta.");
+          toast.success(
+            "Conta criada com sucesso! Verifique seu e-mail para ativar sua conta.",
+          );
+        },
+        onError: (ctx) => {
+          if (ctx.error.code === "USER_ALREADY_EXISTS") {
+            toast.info("E-mail já cadastrado. Tente outro.");
+            return;
+          }
+          toast.error("Erro ao criar conta. Tente novamente.");
         },
       },
     );
