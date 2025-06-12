@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -64,6 +65,7 @@ const SignUpForm = () => {
       {
         onSuccess: () => {
           router.push("/authentication");
+          toast.success("Conta criada com sucesso! Verifique seu e-mail para ativar sua conta.");
         },
       },
     );

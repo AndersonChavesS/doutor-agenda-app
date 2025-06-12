@@ -1,10 +1,12 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { LoaderCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -60,12 +62,15 @@ const LoginForm = () => {
       {
         onSuccess: () => {
           router.push("/dashboard");
+          toast.success("Login realizado com sucesso!");
         },
         onError: (ctx) => {
-          if (ctx.error.status === 403) {
-            alert("Por favor, verifique seu e-mail antes de entrar.");
-          } else {
-            alert(ctx.error.message);
+          if (ctx.error.status === 401) {
+            toast.error("Email ou senha inválidos.");
+          } else if (ctx.error.status === 403) {
+            toast.error(
+              "Email não verificado! Verifique seu email para ativar sua conta.",
+            );
           }
         },
       },
@@ -126,7 +131,11 @@ const LoginForm = () => {
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full cursor-pointer">
-              Entrar
+              {form.formState.isSubmitting ? (
+                <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                "Entrar"
+              )}
             </Button>
           </CardFooter>
         </form>
