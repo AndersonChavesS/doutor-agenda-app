@@ -138,7 +138,11 @@ const LoginForm = () => {
           </CardContent>
           <CardFooter>
             <div className="w-full space-y-2">
-              <Button type="submit" className="w-full cursor-pointer">
+              <Button
+                type="submit"
+                className="w-full cursor-pointer"
+                disabled={form.formState.isSubmitting}
+              >
                 {form.formState.isSubmitting ? (
                   <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
